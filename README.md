@@ -1,2 +1,4 @@
 # gray-bank-pure-java
-Banking app built using JSPs
+A full-stack banking Java web app 
+
+Technologies used include SQL, JSPs, Servlets, and Session Tokens.
