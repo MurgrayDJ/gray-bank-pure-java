@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create an Account</title>
+<link rel="stylesheet" href="baseStyle.css">
+</head>
+<body>
+<h2><b>Create an account</b></h2>
+<div class="container">
+<form action = "createAccount" method = "post">
+<table>
+	<tr>
+	<td><font face="Noto Serif" size="2px">Full name:</font></td>
+	<td><input type="text" name="Name" required></td>
+	</tr>
+	
+	<tr>
+	<td><font face="Noto Serif" size="2px">Date of birth:</font></td>
+	<td><input type="date" name="DOB" required></td>
+	</tr>
+	
+	<tr>
+	<td><font face="Noto Serif" size="2px">Address:</font></td>
+	<td><input type="text" name="Address" required></td>
+	</tr>
+	
+	<tr>
+	<td><font face="Noto Serif" size="2px">Email:</font></td>
+	<td><input type="email" name="Email" required></td>
+	</tr>
+	
+	<tr>
+	<td>
+	<label for="accountTypes"><font face="Noto Serif" size="2px">Account Type:</font></label>
+	<select name="accountTypes" id="accountTypes">
+	  <option value="checking">Checking Account</option>
+	  <option value="savings">Savings Account</option>
+	  <option value="investing">Investment Account</option>
+	</select>
+	</td>
+	</tr>
+	
+</table>
+	<input type="submit" value="Create Account">
+
+</form>
+</div>
+</body>
+</html>

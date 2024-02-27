@@ -1,0 +1,52 @@
+CREATE DATABASE bankDB;
+
+use bankDB;
+
+ CREATE TABLE user_pass(
+	userID VARCHAR(30) PRIMARY KEY, 
+    userPassword VARCHAR(30) NOT NULL
+    );
+    
+CREATE TABLE account_details(
+	fullName VARCHAR(50),
+    DOB DATE,
+    Address VARCHAR(50),
+    EmailID VARCHAR(50), 
+    AccountType VARCHAR(30),
+    userID VARCHAR(30),
+    FOREIGN KEY (userID) references user_pass(userID)
+	);
+    
+ALTER TABLE account_details ADD COLUMN AccountNumber int AUTO_INCREMENT PRIMARY KEY;
+
+CREATE TABLE transactions(
+	TransactionID int AUTO_INCREMENT PRIMARY KEY,
+    TransactionType VARCHAR(30),
+    TransactionDate datetime,
+    Amount DECIMAL(8, 2), #Allow values up to $999,999.99
+    AccountNumber int,
+    FOREIGN KEY (AccountNumber) references account_details(AccountNumber)
+);
+
+SELECT * FROM user_pass;
+DELETE FROM user_pass WHERE userID = 'fake';
+DELETE FROM user_pass WHERE userID = 'fakeuser';
+
+ALTER TABLE account_details MODIFY COLUMN DOB VARCHAR(30);
+SELECT * FROM account_details;
+
+ALTER TABLE transactions ADD userID VARCHAR(30) NOT NULL;
+ALTER TABLE transactions ADD CONSTRAINT fk_userID FOREIGN KEY (userID) REFERENCES user_pass(userID);
+ALTER TABLE transactions MODIFY COLUMN TransactionDate date;
+
+ALTER TABLE account_details ADD COLUMN AccountTotal DECIMAL(8,2) DEFAULT 100;
+
+INSERT INTO account_details(userID, fullName, DOB, Address, EmailID, AccountType) 
+	VALUES('admin', 'Administrator', '4-3-2003', '42 Apple Rd', 'admin@abank.com', 'savings');
+    
+ALTER TABLE transactions DROP FOREIGN KEY fk_userID; 
+SHOW CREATE TABLE transactions;
+SELECT * FROM transactions;
+ALTER TABLE transactions DROP COLUMN userID;  
+
+UPDATE transactions SET userID = 'admin';
