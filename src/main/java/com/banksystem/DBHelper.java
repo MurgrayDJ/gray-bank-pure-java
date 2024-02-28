@@ -15,13 +15,13 @@ import com.banksystem.model.User;
 
 public class DBHelper {
 
-Connection con;
+Connection con = null;
 	
 	// Constructor 
 	public DBHelper() {
 		try {
 			//Load the Driver
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (Exception e) {
 			System.out.println(">> Exception is : " + e);
 		}
@@ -31,7 +31,7 @@ Connection con;
 	public void createConnection() {
 		try {
 			//Connect to the database
-			String url = "jdbc:mysql://localhost:3306/bankDB?";
+			String url = "jdbc:mysql://localhost:3306/bankDB?useSSL=false";
 			String user = " ";
 			String password = " ";
 			con = DriverManager.getConnection(url, user, password);
