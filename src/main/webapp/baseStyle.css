@@ -24,8 +24,8 @@ h2{
     transform: translate(-50%, -50%);
     border-radius: 10px;
     background: white;
-    min-height:150px;
-    width:500px;
+    min-height:180px;
+    width:525px;
     display: flex;
     flex-direction: row;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
