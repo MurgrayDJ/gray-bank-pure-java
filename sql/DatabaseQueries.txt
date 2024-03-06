@@ -23,12 +23,12 @@ CREATE TABLE transactions(
 	TransactionID int AUTO_INCREMENT PRIMARY KEY,
 	TransactionType VARCHAR(30),
 	TransactionDate date,
-	Amount DECIMAL(8,2) #Allow vlaues up to $999,999.99
+	Amount DECIMAL(8,2), #Allow values up to $999,999.99
 	AccountNumber int,
 	userID VARCHAR(30) NOT NULL,
-	FOREIGN KEY(AccountNumber) references account_details(AccountNumber)
+	FOREIGN KEY(AccountNumber) references account_details(AccountNumber),
+	FOREIGN KEY(userID) REFERENCES user_pass(userID)
 );
-ALTER TABLE transactions ADD CONSTRAINT fk_userID FOREIGN KEY(userID) REFERENCES user_pass(userID);
 
 SELECT * FROM user_pass;
 SELECT * FROM account_details;

@@ -1,0 +1,35 @@
+CREATE DATABASE bankDB;
+
+use bankDB;
+
+CREATE TABLE user_pass(
+	userID VARCHAR(30) PRIMARY KEY,
+	userPassword VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE account_details(
+	fullName VARCHAR(50),
+	DOB VARCHAR(30),
+	Address VARCHAR(50),
+	EmailID VARCHAR(50),
+	AccountType VARCHAR(30),
+	userID VARCHAR(30),
+	AccountNumber int AUTO_INCREMENT PRIMARY KEY,
+	AccountTotal DECIMAL(8,2) DEFAULT 100,
+	FOREIGN KEY (userID) references user_pass(userID)
+);
+
+CREATE TABLE transactions(
+	TransactionID int AUTO_INCREMENT PRIMARY KEY,
+	TransactionType VARCHAR(30),
+	TransactionDate date,
+	Amount DECIMAL(8,2), #Allow values up to $999,999.99
+	AccountNumber int,
+	userID VARCHAR(30) NOT NULL,
+	FOREIGN KEY(AccountNumber) references account_details(AccountNumber),
+	FOREIGN KEY(userID) REFERENCES user_pass(userID)
+);
+
+SELECT * FROM user_pass;
+SELECT * FROM account_details;
+SELECT * FROM transactions;
