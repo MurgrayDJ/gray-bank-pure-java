@@ -21,7 +21,7 @@ Connection con = null;
 	public DBHelper() {
 		try {
 			//Load the Driver
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("software.aws.rds.jdbc.mysql.Driver");
 		} catch (Exception e) {
 			System.out.println(">> Exception is : " + e);
 		}
@@ -31,7 +31,7 @@ Connection con = null;
 	public void createConnection() {
 		try {
 			//Connect to the database
-			String url = "jdbc:mysql://localhost:3306/bankDB?useSSL=false";
+			String url = " ";
 			String user = " ";
 			String password = " ";
 			con = DriverManager.getConnection(url, user, password);
