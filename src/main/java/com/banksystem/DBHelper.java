@@ -1,5 +1,6 @@
 package com.banksystem;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import com.banksystem.model.Account;
 import com.banksystem.model.Transaction;
 import com.banksystem.model.User;
+
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 public class DBHelper {
@@ -29,11 +32,13 @@ Connection con = null;
 	
 	//Create a connection to the database
 	public void createConnection() {
+		Dotenv env = Dotenv.configure().directory("/../.env").load();
+		;
 		try {
 			//Connect to the database
-			String url = " ";
-			String user = " ";
-			String password = " ";
+			String url = env.get("DB_URL");
+			String user = env.get("DB_USER");
+			String password = env.get("DB_PASS");
 			con = DriverManager.getConnection(url, user, password);
 			System.out.println(">> Database connection established");
 		} catch (Exception e) {
