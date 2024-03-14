@@ -16,5 +16,6 @@ This application allows you to:
 - Create a user account
 - Login
 - Create bank accounts (Checking, Savings, Credit)
+- Complete transactions (Withdraw or deposit money)
 - View account statements (list of previous transactions and current balance)
  
